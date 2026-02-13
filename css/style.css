@@ -916,3 +916,14 @@ body::before {
     background: var(--primary);
     width: 0%;
 }
+
+/* Efecto de inclinación 3D para tarjetas */
+.card {
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: perspective(1000px) rotateX(5deg) rotateY(-5deg) translateY(-10px);
+    box-shadow: 15px 15px 0px rgba(245, 32, 32, 0.4); /* Sombra estilo offset de cómic */
+    z-index: 10;
+}
