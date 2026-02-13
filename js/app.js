@@ -19,6 +19,34 @@ const btnModo = document.getElementById("btnModo");
 btnModo.textContent = "Estilo de página"; // ✅ fijo
 
 const MODOS = ["light", "dark", "spiderman"];
+let player;
+function onYouTubeIframeAPIReady() {
+    player = new YT.Player('player', {
+        height: '0',
+        width: '0',
+        videoId: 'eLz5AjuY6os', // ID del video: Spider-Man Theme
+        playerVars: {
+            'autoplay': 1,
+            'controls': 0,
+            'loop': 1,
+            'playlist': 'eLz5AjuY6os'
+        },
+        events: {
+            'onReady': onPlayerReady
+        }
+    });
+}
+
+function onPlayerReady(event) {
+    // Intentar reproducir automáticamente
+    event.target.playVideo();
+    
+    // TRUCO: Si el navegador lo bloquea, se activará al primer clic que el usuario haga en cualquier parte
+    document.body.addEventListener('click', () => {
+        event.target.playVideo();
+    }, { once: true });
+}
+
 
 function modoActual() {
   if (document.body.classList.contains("spiderman")) return "spiderman";
