@@ -220,3 +220,20 @@ document.addEventListener("keydown", (e) => {
 
 console.log("Spider-Man web PRO (con imágenes) lista ✅")
 
+document.addEventListener('click', (e) => {
+    const web = document.createElement('div');
+    web.innerHTML = "🕸️";
+    web.style.position = "absolute";
+    web.style.left = e.pageX + "px";
+    web.style.top = e.pageY + "px";
+    web.style.fontSize = "2rem";
+    web.style.pointerEvents = "none";
+    web.style.transition = "transform 0.5s, opacity 0.5s";
+    document.body.appendChild(web);
+
+    setTimeout(() => {
+        web.style.transform = "scale(2)";
+        web.style.opacity = "0";
+        setTimeout(() => web.remove(), 500);
+    }, 10);
+});
