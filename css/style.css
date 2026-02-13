@@ -647,6 +647,37 @@ body {
   }
 }
 
+/* =========================
+   TRAJES (IMÁGENES IGUALES)
+========================= */
+
+.suit__imgBox {
+  width: 100%;
+  height: 240px; /* 🔥 todas iguales */
+  border-radius: 18px;
+  overflow: hidden;
+
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  display: grid;
+  place-items: center;
+  margin-bottom: 12px;
+}
+
+.suit__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* 🔥 clave: todas se ven uniformes */
+  object-position: top; /* 🔥 para que no se corte la cara */
+  display: block;
+  transition: transform 0.18s ease;
+}
+
+.suit:hover .suit__img {
+  transform: scale(1.03);
+}
+
 
 /* =========================
    MODO CLARO (para JS)
