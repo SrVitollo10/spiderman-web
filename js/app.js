@@ -1,7 +1,7 @@
 /* =========================================
-   Spider-Man Web - JavaScript PRO
+   Spider-Man Web - JavaScript PRO (con imágenes)
    - Modo claro/oscuro (guardado)
-   - Modal profesional para villanos
+   - Modal profesional para villanos (con imagen)
    - Botón "Arriba"
 ========================================= */
 
@@ -55,7 +55,7 @@ btnScrollTop.addEventListener("click", () => {
 });
 
 /* =========================
-   3) MODAL PROFESIONAL
+   3) MODAL PROFESIONAL (CON IMAGEN)
 ========================= */
 
 const modalOverlay = document.getElementById("modalOverlay");
@@ -65,35 +65,41 @@ const btnCerrarModal2 = document.getElementById("btnCerrarModal2");
 const modalTitle = document.getElementById("modalTitle");
 const modalDesc = document.getElementById("modalDesc");
 
+// Botones de villanos
 const botonesVillanos = document.querySelectorAll(".btnVillano");
 
+/* Datos completos (texto + imagen) */
 const detallesVillanos = {
   "Green Goblin": {
     titulo: "Green Goblin",
     descripcion:
       "Norman Osborn. Uno de los enemigos más personales y peligrosos de Spider-Man. Usa bombas, un planeador y tecnología avanzada. Es impredecible y brutal.",
+    img: "imagenes/villanos/Green Goblin.png",
   },
   "Doctor Octopus": {
     titulo: "Doctor Octopus",
     descripcion:
       "Otto Octavius. Científico brillante con brazos mecánicos gigantes. Su mayor peligro es su inteligencia: siempre tiene un plan y es un rival estratégico.",
+    img: "imagenes/villanos/Doctor Octopus.png",
   },
   Venom: {
     titulo: "Venom",
     descripcion:
       "Un simbionte alienígena que se une a un humano y lo potencia. Es fuerte, rápido, resistente y puede anular el sentido arácnido. Un enemigo aterrador.",
+    img: "imagenes/villanos/Venom.png",
   },
   Sandman: {
     titulo: "Sandman",
     descripcion:
       "Flint Marko. Puede convertir su cuerpo en arena, hacerse gigante y crear armas con su forma. Es muy difícil de derrotar por su resistencia.",
+    img: "imagenes/villanos/Sandman.png",
   },
 };
 
 function abrirModal(villanoKey) {
   const data = detallesVillanos[villanoKey];
 
-  // Seguridad por si falta algún villano
+  // Seguridad por si falta algo
   if (!data) {
     modalTitle.textContent = "Villano";
     modalDesc.textContent = "No hay información disponible para este villano.";
@@ -102,10 +108,30 @@ function abrirModal(villanoKey) {
     modalDesc.textContent = data.descripcion;
   }
 
+  // Si ya existe una imagen previa, la eliminamos
+  const imgAnterior = document.querySelector(".modal__imgBox");
+  if (imgAnterior) imgAnterior.remove();
+
+  // Si existe imagen, la creamos y la insertamos antes de la descripción
+  if (data && data.img) {
+    const imgBox = document.createElement("div");
+    imgBox.classList.add("modal__imgBox");
+
+    const img = document.createElement("img");
+    img.classList.add("modal__img");
+    img.src = data.img;
+    img.alt = data.titulo;
+
+    imgBox.appendChild(img);
+
+    // Insertar la imagen antes de la descripción
+    modalDesc.parentNode.insertBefore(imgBox, modalDesc);
+  }
+
   modalOverlay.classList.add("active");
   modalOverlay.setAttribute("aria-hidden", "false");
 
-  // Evita que el body haga scroll cuando el modal está abierto
+  // Evita scroll del body
   document.body.style.overflow = "hidden";
 }
 
@@ -113,7 +139,7 @@ function cerrarModal() {
   modalOverlay.classList.remove("active");
   modalOverlay.setAttribute("aria-hidden", "true");
 
-  // Devuelve el scroll normal
+  // Devuelve scroll
   document.body.style.overflow = "";
 }
 
@@ -129,9 +155,8 @@ botonesVillanos.forEach((boton) => {
 btnCerrarModal.addEventListener("click", cerrarModal);
 btnCerrarModal2.addEventListener("click", cerrarModal);
 
-// Cerrar modal al hacer click fuera del modal (en el overlay)
+// Cerrar modal al hacer click fuera del modal
 modalOverlay.addEventListener("click", (e) => {
-  // Si el click fue directamente en el overlay (no dentro del modal)
   if (e.target === modalOverlay) {
     cerrarModal();
   }
@@ -148,4 +173,4 @@ document.addEventListener("keydown", (e) => {
    4) MENSAJE EN CONSOLA
 ========================= */
 
-console.log("Spider-Man web PRO lista ✅");
+console.log("Spider-Man web PRO (con imágenes) lista ✅");
