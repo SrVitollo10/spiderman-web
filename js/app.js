@@ -5,41 +5,58 @@
    - Botón "Arriba"
 ========================================= */
 
+
 /* =========================
-   1) MODO CLARO / OSCURO
+   ESTILO DE PÁGINA (3 modos) - LIMPIO Y SIN BUGS
+   Orden: Claro -> Oscuro -> Spider-Man (en bucle)
+   - Claro: body.light
+   - Oscuro: sin clase (normal)
+   - Spider-Man: body.spiderman
+   El botón NO cambia de texto nunca.
 ========================= */
 
 const btnModo = document.getElementById("btnModo");
+btnModo.textContent = "Estilo de página"; // ✅ fijo
 
-function guardarModo(modo) {
+const MODOS = ["light", "dark", "spiderman"];
+
+function modoActual() {
+  if (document.body.classList.contains("spiderman")) return "spiderman";
+  if (document.body.classList.contains("light")) return "light";
+  return "dark";
+}
+
+function aplicarModo(modo) {
+  // Limpia
+  document.body.classList.remove("light", "spiderman");
+
+  // Aplica
+  if (modo === "light") document.body.classList.add("light");
+  if (modo === "spiderman") document.body.classList.add("spiderman");
+
+  // Guarda
   localStorage.setItem("modo", modo);
+
+  // ✅ vuelve a dejar fijo el texto (por si otro código intenta cambiarlo)
+  btnModo.textContent = "Estilo de página";
 }
 
 function cargarModo() {
-  const modoGuardado = localStorage.getItem("modo");
-
-  if (modoGuardado === "light") {
-    document.body.classList.add("light");
-    btnModo.textContent = "Modo oscuro";
-  } else {
-    document.body.classList.remove("light");
-    btnModo.textContent = "Modo claro";
-  }
+  const guardado = localStorage.getItem("modo");
+  const inicial = MODOS.includes(guardado) ? guardado : "light"; // ✅ arranca en claro
+  aplicarModo(inicial);
 }
 
 btnModo.addEventListener("click", () => {
-  document.body.classList.toggle("light");
-
-  if (document.body.classList.contains("light")) {
-    btnModo.textContent = "Modo oscuro";
-    guardarModo("light");
-  } else {
-    btnModo.textContent = "Modo claro";
-    guardarModo("dark");
-  }
+  const actual = modoActual();
+  const idx = MODOS.indexOf(actual);
+  const siguiente = MODOS[(idx + 1) % MODOS.length];
+  aplicarModo(siguiente);
 });
 
 cargarModo();
+
+
 
 /* =========================
    2) BOTÓN ARRIBA

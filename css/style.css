@@ -758,3 +758,77 @@ body.light {
     justify-content: center;
   }
 }
+
+/* =========================
+   MODO SPIDER-MAN (ROJO/AZUL)
+========================= */
+
+body.spiderman {
+  --bg: #7a0b12; /* rojo oscuro */
+  --bg-2: #b10f1a; /* rojo */
+  --text: #ffffff;
+  --muted: rgba(255, 255, 255, 0.85);
+
+  --card: rgba(255, 255, 255, 0.08);
+  --card-border: rgba(255, 255, 255, 0.18);
+
+  background: radial-gradient(
+      900px 500px at 20% 10%,
+      rgba(37, 99, 235, 0.25),
+      transparent 60%
+    ),
+    radial-gradient(
+      900px 500px at 80% 0%,
+      rgba(0, 0, 0, 0.25),
+      transparent 60%
+    ),
+    linear-gradient(180deg, var(--bg-2), var(--bg));
+}
+
+/* Header azul Spider-Man */
+body.spiderman .header {
+  background: rgba(37, 99, 235, 0.9);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Links del menú en blanco */
+body.spiderman .nav a {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+body.spiderman .nav a:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* Botones más contrastados */
+body.spiderman .btn--outline {
+  border-color: rgba(255, 255, 255, 0.25);
+  color: white;
+}
+
+body.spiderman .btn--outline:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* =========================
+   FIX: HEADER legible en MODO CLARO
+========================= */
+
+body.light .header {
+  background: rgba(37, 99, 235, 0.92); /* azul spiderman */
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+body.light .logo {
+  color: #ffffff;
+}
+
+body.light .nav a {
+  color: rgba(255, 255, 255, 0.92);
+}
+
+body.light .nav a:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.18);
+}
