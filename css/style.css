@@ -927,3 +927,21 @@ body::before {
     box-shadow: 15px 15px 0px rgba(245, 32, 32, 0.4); /* Sombra estilo offset de cómic */
     z-index: 10;
 }
+.spider-alert {
+    position: fixed;
+    top: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--primary);
+    color: white;
+    padding: 15px 30px;
+    border: 3px solid black;
+    font-family: 'Luckiest Guy', cursive;
+    z-index: 10001;
+    transition: top 0.5s ease-in-out;
+    box-shadow: 5px 5px 0px black;
+}
+
+.spider-alert.show {
+    top: 20px;
+}

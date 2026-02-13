@@ -245,3 +245,13 @@ function moveScrollBar() {
     let scrolled = (winScroll / height) * 100;
     document.getElementById("myBar").style.width = scrolled + "%";
 }
+
+window.addEventListener('load', () => {
+    const alert = document.getElementById('spider-alert');
+    setTimeout(() => {
+        alert.classList.add('show');
+        setTimeout(() => {
+            alert.classList.remove('show');
+        }, 4000);
+    }, 1000);
+});
