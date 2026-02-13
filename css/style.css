@@ -885,3 +885,9 @@ body.light .nav a:hover {
 .movie__desc {
   color: var(--muted);
 }
+
+.btn:hover {
+  filter: brightness(1.2);
+  transform: translateY(-2px);
+  transition: all 0.3s ease;
+}
