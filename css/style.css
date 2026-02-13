@@ -902,3 +902,17 @@ body::before {
     95% { border-width: 15px; opacity: 1; }
     100% { border-width: 0px; opacity: 0; }
 }
+
+.progress-container {
+    position: fixed;
+    top: 0;
+    z-index: 10000;
+    width: 100%;
+    height: 5px;
+    background: transparent;
+}
+.progress-bar {
+    height: 5px;
+    background: var(--primary);
+    width: 0%;
+}
