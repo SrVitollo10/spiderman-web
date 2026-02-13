@@ -832,3 +832,56 @@ body.light .nav a:hover {
   color: #ffffff;
   background: rgba(255, 255, 255, 0.18);
 }
+
+/* =========================
+   PELÍCULAS
+========================= */
+
+.movies {
+  display: grid;
+  gap: 14px;
+}
+
+.movies__era {
+  margin-top: 10px;
+  font-size: 1.25rem;
+  font-weight: 900;
+  opacity: 0.95;
+}
+
+.movie {
+  display: grid;
+  gap: 10px;
+}
+
+.movie__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.movie__title {
+  font-weight: 900;
+  font-size: 1.1rem;
+}
+
+.movie__tag {
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-weight: 900;
+  font-size: 0.85rem;
+
+  background: rgba(37, 99, 235, 0.18);
+  border: 1px solid rgba(37, 99, 235, 0.35);
+  color: #dbe7ff;
+}
+
+.movie__info {
+  color: var(--muted);
+}
+
+.movie__desc {
+  color: var(--muted);
+}
