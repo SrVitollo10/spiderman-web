@@ -142,7 +142,7 @@ body {
   font-weight: 900;
   cursor: pointer;
 
-  background: linear-gradient(90deg, var(--primary), #ff3b4a);
+  background: linear-gradient(90deg, var(--primary), #080707);
   color: white;
 
   box-shadow: 0 12px 30px rgba(225, 29, 46, 0.25);
