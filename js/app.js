@@ -47,7 +47,6 @@ function onPlayerReady(event) {
     }, { once: true });
 }
 
-
 function modoActual() {
   if (document.body.classList.contains("spiderman")) return "spiderman";
   if (document.body.classList.contains("light")) return "light";
@@ -218,4 +217,6 @@ document.addEventListener("keydown", (e) => {
    4) MENSAJE EN CONSOLA
 ========================= */
 
-console.log("Spider-Man web PRO (con imágenes) lista ✅");
+
+console.log("Spider-Man web PRO (con imágenes) lista ✅")
+
